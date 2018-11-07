@@ -5,6 +5,7 @@ import DevTools from 'mobx-react-devtools'
 import Docs from './Docs/Docs'
 import { HomePage } from './Home/Home'
 import { NotFoundPage } from './NotFound/NotFound'
+import { TranslationDemoPage } from './TranslationDemo/TranslationDemo'
 import ScrollToTop from './../components/ScrollToTop/ScrollToTop'
 
 export class Routes extends React.Component {
@@ -17,6 +18,7 @@ export class Routes extends React.Component {
           <ScrollToTop>
             <Switch>
               <Route path="/docs" component={Docs} />
+              <Route path="/translation" component={TranslationDemoPage} />
               <Route exact path="/" component={HomePage} />
               <Route component={NotFoundPage} />
             </Switch>

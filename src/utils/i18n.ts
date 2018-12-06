@@ -1,13 +1,13 @@
 import i18n from "i18next";
 import { reactI18nextModule } from "react-i18next";
 
+import translationEN from 'src/assets/i18n/en/translation.json';
+
 // the translations
 // (tip move them in a JSON file and import them)
 const resources = {
   en: {
-    translation: {
-      "Welcome to React": "Welcome to React and react-i18next"
-    }
+    translation: translationEN
   },
   fr: {
     translation: {

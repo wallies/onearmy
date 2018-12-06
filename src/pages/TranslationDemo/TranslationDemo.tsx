@@ -9,8 +9,6 @@ import i18n from '../../utils/i18n';
 import { t } from 'i18next';
 import { withNamespaces } from 'react-i18next';
 
-import { FormattedDate, FormattedMessage } from 'react-intl';
-
 // define the component properties with typing information for fields
 // properties are things that will have been passed down from parent component
 interface IProps {
@@ -19,8 +17,7 @@ interface IProps {
 // define the component state with typing information for fields
 // state is local to the component and will trigger re-render on change
 interface IState {
-  language: string,
-  locale: string
+  language: string
 }
 
 export class TranslationDemoPage extends React.Component<IProps, IState> {
@@ -28,7 +25,7 @@ export class TranslationDemoPage extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     // an initial state can be set here, any future changes should be
-    this.state = { language: 'en', locale: "fr" }
+    this.state = { language: 'en' }
   }
   // functions required by the component can go here. Ideally complex business logic should be seperated out
   public changeLanguage = (lang: string) => {
@@ -51,18 +48,6 @@ export class TranslationDemoPage extends React.Component<IProps, IState> {
         <Button onClick={() => this.changeLanguage('es')}>Spanish</Button>
         <Button onClick={this.reset}>Reset</Button>
         <h1>{t('Welcome to React')}</h1>
-        <h2>
-          <FormattedMessage id="Welcome to React"
-                                defaultMessage="Welcome to React Intl"
-                                description="Welcome Message" />
-        </h2>
-        <FormattedDate
-            value={new Date(1459913574887)}
-            year='numeric'
-            month='long'
-            day='numeric'
-            weekday='long'
-        />
       </div>
     )
   }

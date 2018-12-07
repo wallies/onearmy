@@ -2,6 +2,8 @@ import i18n from "i18next";
 import { reactI18nextModule } from "react-i18next";
 
 import translationEN from 'src/assets/i18n/en/translation.json';
+import translationES from 'src/assets/i18n/es/translation.json';
+import translationFR from 'src/assets/i18n/fr/translation.json';
 
 // the translations
 // (tip move them in a JSON file and import them)
@@ -10,14 +12,10 @@ const resources = {
     translation: translationEN
   },
   fr: {
-    translation: {
-      "Welcome to React": "Bienvenue a la React et react-i18next"
-    }
+    translation: translationFR
   },
   es: {
-    translation: {
-      "Welcome to React": "Bienvenido a React y react-i18next"
-    }
+    translation: translationES
   }
 };
 

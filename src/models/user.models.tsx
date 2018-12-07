@@ -13,6 +13,8 @@ export interface IUser {
   verified: boolean
   altName?: string
   address?: IAddress
+  _created: Date
+  _modified: Date
 }
 
 interface IAddress {

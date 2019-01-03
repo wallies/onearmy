@@ -2,12 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "build/dist",
-    "module": "esnext",
-    "target": "es5",
+    "module": "commonjs",
+    "target": "es6",
     "lib": ["es6", "dom"],
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
@@ -22,19 +21,5 @@
     "typeRoots": ["./types", "./node_modules/@types"],
     "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules",
-    "types",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts",
-    "config/*.js",
-    "config/jest/*.js",
-    "functions-cron",
-    "functions",
-    "src/utils/UserMigration"
-  ]
+  "exclude": ["node_modules", "data"]
 }

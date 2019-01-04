@@ -6,7 +6,6 @@ import translationES from 'src/assets/i18n/es/translation.json';
 import translationFR from 'src/assets/i18n/fr/translation.json';
 
 // the translations
-// (tip move them in a JSON file and import them)
 const resources = {
   en: {
     translation: translationEN

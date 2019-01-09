@@ -70,6 +70,8 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/flux-standard-action": "1.1.0",
     "@types/jest": "23.3.2",
     "@types/md5": "^2.1.33",
@@ -78,7 +80,12 @@
     "@types/react-dom": "16.0.7",
     "@types/react-router-dom": "4.3.1",
     "@types/react-slick": "0.23.2",
+    "@types/react-test-renderer": "^16.0.3",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "mobx-react-devtools": "^6.0.3",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.7.0",
     "sass-loader": "7.1.0",
     "typescript": "3.1.1"
   },
@@ -125,7 +132,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "C:\\Apps\\chrismclarke\\oneArmy\\tsconfig.test.json"
+        "tsConfigFile": "./tsconfig.test.json"
       }
     }
   },

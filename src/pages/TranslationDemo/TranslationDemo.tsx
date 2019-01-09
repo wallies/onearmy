@@ -6,7 +6,7 @@ import * as React from 'react'
 
 import { t } from 'i18next';
 
-import { ChangeLanguague } from '../../components/ChangeLanguage/ChangeLanguage';
+import { ChangeLanguage } from '../../components/ChangeLanguage/ChangeLanguage';
 
 // define the component properties with typing information for fields
 // properties are things that will have been passed down from parent component
@@ -34,8 +34,7 @@ export class TranslationDemoPage extends React.Component<IProps, IState> {
   public render() {
     return (
       <div id="TranslationPage">
-        <div>The current language is {this.state.language}</div>
-        <ChangeLanguague callbackFromParent={this.changeLanguage} />
+        <ChangeLanguage callbackFromParent={this.changeLanguage}/>
         <h1>{t('Welcome to React')}</h1>
       </div>
     )

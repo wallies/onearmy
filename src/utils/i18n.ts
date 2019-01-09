@@ -1,9 +1,9 @@
 import i18n from "i18next";
 import { reactI18nextModule } from "react-i18next";
 
-import translationEN from 'src/assets/i18n/en/translation.json';
-import translationES from 'src/assets/i18n/es/translation.json';
-import translationFR from 'src/assets/i18n/fr/translation.json';
+import translationEN from '../assets/i18n/en/translation.json';
+import translationES from '../assets/i18n/es/translation.json';
+import translationFR from '../assets/i18n/fr/translation.json';
 
 // the translations
 const resources = {

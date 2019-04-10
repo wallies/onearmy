@@ -1,6 +1,7 @@
 // node module imports
 import * as bodyParser from 'body-parser'
-import * as cors from 'cors'
+import * as corsLib from 'cors'
+const cors = corsLib({ origin: true })
 import * as express from 'express'
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
@@ -9,20 +10,24 @@ admin.initializeApp()
 // custom module imports
 import * as DB from './databaseBackup'
 import * as ImageConverter from './imageConverter'
+import * as StorageFunctions from './storageFunctions'
+import * as UtilsFunctions from './utils'
+import * as AnalyticsFunctions from './analytics'
+import { Credentials } from 'google-auth-library'
 
 // update on change logging purposes
-const buildNumber = 1.03
+const buildNumber = 1.09
 
 // express settings to handle api
 const app = express()
-// Automatically allow cross-origin requests
-app.use(cors({ origin: true }))
 // use bodyparse to create json object from body
 app.use(
   bodyParser.json({
     limit: '1mb',
   }),
 )
+// configure app to use cors by default
+app.use(corsLib({ origin: true }))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 /************ GET and POST requests ************************************************
@@ -31,28 +36,60 @@ at /api/[endpoint]
 ************************************************************************************/
 
 app.all('*', async (req, res, next) => {
-  // get the endpoint based on the request path
-  const endpoint = req.path.split('/')[1]
-  // *** NOTE currently all request types handled the same, i.e. GET/POST
-  // will likely change behaviour in future when required
-  switch (endpoint) {
-    case 'db-test':
-      const token = await DB.AuthTest()
-      res.send(token)
-      break
-    case 'backup':
-      const response = await DB.BackupDatabase()
-      res.send(response)
-      break
-    default:
-      res.send('invalid api endpoint')
-  }
+  // add cors to requests
+  cors(req, res, async () => {
+    // get the endpoint based on the request path
+    const endpoint = req.path.split('/')[1]
+    // *** NOTE currently all request types handled the same, i.e. GET/POST
+    // will likely change behaviour in future when required
+    switch (endpoint) {
+      case 'db-test':
+        const testToken = await UtilsFunctions.AuthTest()
+        res.send(testToken)
+        break
+      case 'backup':
+        const response = await DB.BackupDatabase()
+        res.send(response)
+        break
+      case 'getAccessToken':
+        const token = await UtilsFunctions.getAccessToken(
+          req.params.accessScopes,
+        )
+        res.send(token)
+        break
+      default:
+        res.send('invalid api endpoint')
+    }
+  })
 })
 exports.api = functions.https.onRequest(app)
 
 app.listen(3000, 'localhost', listen => {
   console.log(`API v${buildNumber} listening on port 3000`)
 })
+
+/************ Cloud Firestore Triggers ******************************************************
+ Functions called in response to changes in Cloud Firestore database
+ ************************************************************************************/
+exports.syncCommentsCount = functions.firestore
+  .document('discussions/{discussionId}/comments/{commentId}')
+  .onWrite((change, context) => {
+    // ref to the parent document
+    const discussionId = context.params.discussionId
+    const docRef = admin
+      .firestore()
+      .collection('discussions')
+      .doc(discussionId)
+
+    // get all comments and aggregate
+    return docRef
+      .collection('comments')
+      .get()
+      .then(querySnapshot => {
+        return docRef.update({ _commentCount: querySnapshot.size })
+      })
+      .catch(err => console.log(err))
+  })
 
 /************ Cron tasks ***********************************************************
 Use pubsub to automatically subscribe to messages sent from cron.
@@ -75,8 +112,51 @@ exports.dailyTasks = functions.pubsub
 Functions called in response to changes to firebase storage objects
 ************************************************************************************/
 
-exports.imageResize = functions.storage.object().onFinalize(async object => {
-  return ImageConverter.resizeImage(object)
+exports.imageResize = functions.storage
+  .object()
+  .onFinalize(async (object, context) => {
+    if (
+      object.metadata &&
+      (object.metadata.resized || object.metadata.original)
+    )
+      return Promise.resolve()
+    return ImageConverter.resizeImage(object)
+  })
+
+/************ Callable *************************************************************
+These can be called from directly within the app (passing additional auth info)
+https://firebase.google.com/docs/functions/callable
+Any functions added here should have a custom url rewrite specified in root firebase.json
+to handle CORS preflight requests correctly
+************************************************************************************/
+exports.removeStorageFolder = functions.https.onCall((data, context) => {
+  console.log('storage folder remove called', data, context)
+  const path = data.text
+  StorageFunctions.deleteStorageItems(data.text)
+})
+// use service agent to gain access credentials for gcp with  given access scopes
+exports.getAccessToken = functions.https.onCall(
+  async (data: getAccessTokenData, context) => {
+    const token = await UtilsFunctions.getAccessToken(data.accessScopes)
+    return token
+  },
+)
+interface getAccessTokenData {
+  accessScopes: string[]
+}
+
+exports.getAnalytics = functions.https.onCall(
+  async (data: getAnalyticsData, context) => {
+    console.log('get analytics request received', data)
+    AnalyticsFunctions.getAnalyticsReport(data.viewId, data.token)
+  },
+)
+interface getAnalyticsData {
+  viewId: string
+  token: string
+}
+exports.syncCommentsCount = functions.https.onCall(async () => {
+  console.log('sync comments count called')
 })
 
 // add export so can be used by test

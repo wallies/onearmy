@@ -2,20 +2,22 @@ import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 import 'firebase/storage'
+import 'firebase/functions'
 import { FIREBASE_CONFIG } from '../../src/config/config'
 
 // initialise with config settings, additional firestore config to support future changes
 firebase.initializeApp(FIREBASE_CONFIG)
-firebase.firestore().settings({ timestampsInSnapshots: true })
 firebase
   .firestore()
   .enablePersistence()
   .catch(err => console.error('could not persist firestore', err))
 
 // export firebase endpoints to be accessed by other functions
-export const db = firebase.firestore()
+export const afs = firebase.firestore()
 export const storage = firebase.storage()
 export const auth = firebase.auth()
+export const functions = firebase.functions()
+export const EmailAuthProvider = firebase.auth.EmailAuthProvider
 
 // want to also expose the default firebase user
 /* tslint:disable: no-empty-interface*/

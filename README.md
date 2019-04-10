@@ -1,15 +1,40 @@
-# Quick start
+[![Build Status](https://travis-ci.org/OneArmyWorld/onearmy.svg?branch=master)](https://travis-ci.org/OneArmyWorld/onearmy)
+[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
-Install dependencies
-`yarn`
+# 🌍 &nbsp; Onearmy
 
-Run
-`npm run start`
+Welcome to One Army!
+We are building a new platform to help unite people and contribute to social & environmental projects, such as [Precious Plastic](https://preciousplastic.com), [Phonebloks](https://phonebloks.com/), [ProjectKamp](https://projectkamp.com/) or [Story Hopper](https://story-hopper.com/). A platform to connect, educate and empower our global community (65K) to solve society's greatest challenges. Together. As One Army.
 
-(use chrome or firefox... things might work on other browsers but this will most likely be coincidence. Want wider support? Join us and help!)
+## 👀 &nbsp; Why One Army
 
-# Getting Involved
+For the past 5+ years we’ve worked together with thousands of people from all over the world on open hardware projects to tackle some of the most pressing environmental issues, building machines and tools to fix the mess. The more we worked on these projects, the more we realised that there are two main hurdles to the success of a project:
 
-If you are interested joining this project please see the [contributing guidelines](https://github.com/OneArmyWorld/onearmy/blob/dev/CONTRIBUTING.md)
+- A project's success is closely linked to its community, and for a new project starting up, finding and creating their own strong community is often a time-consuming activity that can take lots of resources.
+- While working on a project we often find ourselves having to use a multitude of digital tools that are often incomplete, disconnected, privately owned and not open source.
 
-This project is based on Create React App, associated documentation can be found [here](https://github.com/facebook/create-react-app)
+One Army aims to tackle these problems by creating a strong unified community for the different projects under its umbrella and offering the necessary tools to collaborate and connect in one single place. Free and opensource.
+
+## ⚡️ &nbsp; What is One Army
+
+The One Army platform helps people to connect and collaborate on environmental projects in one single place. A place where people can meet, help each other, ask and answer questions, share their innovative ways of fixing problems, discover people around them, connect locally, find events and more. One Army aims to provide the tools to connect both online and offline. Amongst other features we have Newsfeed, How-to, Q&A, Discussion, Events, Discover, Maps and more.
+
+## 👐 Open Source
+
+Society and the environment are kind of screwed 💩 in many ways. We think free knowledge and open source are the fastest and most efficient ways to bring about innovation to tackle some of the most pressing humanity’s fuck ups. Simple.
+
+## 🤝 &nbsp; Contributions
+
+Contributions, issues and feature requests are very welcome.
+Please make sure to read the [Contributing Guide](/CONTRIBUTING.md) before making a pull request.
+
+## 🌟 &nbsp; Core Team
+
+If needed you can [drop us a line here](mailto:hello@preciousplastic.com?subject=contact%20from%20github) 👋
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars0.githubusercontent.com/u/10515065?s=60&v=4" width="60px;"/><br /><sub><b>Chris Clarke</b></sub>](https://github.com/chrismclarke)<br />[💻](https://github.com/OneArmyWorld/onearmy/commits?author=chrismclarke "Code") | [<img src="https://avatars2.githubusercontent.com/u/4993215?s=60&v=4" width="60px;"/><br /><sub><b>Benjamin Gammaire</b></sub>](https://github.com/bengamma)<br />[💻](https://github.com/OneArmyWorld/onearmy/commits?author=BenGamma "Code")
+| :---: | :---: |
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->

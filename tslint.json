@@ -15,6 +15,13 @@
     "no-console": false,
     "jsx-no-lambda": false,
     "jsx-boolean-value": false,
-    "no-unused-expression": false
-  }
+    "no-empty": true,
+    "no-any": false,
+    "prefer-const": true,
+    "member-access": false,
+    "array-type": false,
+    "no-reference": false,
+    "member-ordering": false
+  },
+  "defaultSeverity": "warning"
 }

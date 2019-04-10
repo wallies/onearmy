@@ -17,6 +17,7 @@ import Header from './common/Header/Header'
 import { SITE } from 'src/config/config'
 import { DebugEditorPage } from 'src/components/Editor/Debug'
 import { DevNotice } from 'src/components/Dev/DevNotice'
+import { TranslationDemoPage } from './TranslationDemo/TranslationDemo'
 
 interface IState {
   singlePageMode: boolean
@@ -83,6 +84,12 @@ export const DEBUG_PAGES: IPageMeta[] =
           component: <DebugEditorPage />,
           title: 'Debug Editor',
           description: '',
+        },
+        {
+          path: '/translation',
+          component: <TranslationDemoPage />,
+          title: 'Translations Demo',
+          description: ' protoype of switching languages and translations',
         },
       ]
     : []

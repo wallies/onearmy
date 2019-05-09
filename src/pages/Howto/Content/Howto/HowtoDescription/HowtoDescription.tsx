@@ -26,6 +26,8 @@ export default class HowtoDescription extends React.PureComponent<IProps, any> {
   }
 
   public durationSincePosted(postDate: Date) {
+    // TODO - see if can use intl.realtiveTimeFormat instead and remove date-fns (more lightweight)
+    // Will also want to adjust to months/years if number > 31 or 365
     const daysSince: number = differenceInDays(new Date(), new Date(postDate))
     return `${daysSince} days ago`
   }

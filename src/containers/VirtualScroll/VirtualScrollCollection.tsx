@@ -2,6 +2,10 @@ import * as React from 'react'
 import { AutoSizer, Collection } from 'react-virtualized'
 /********************************************************************
                 WIP -  CC started but deprioritised 25/5/19
+Want way to build flexible container so that any child components can
+more simply sit inside <VirtualScroll /> , however challenging as 
+3rd party lib expects explicit length, height, rendered components etc
+instead of just taking from the child elements. To work on.                
 **********************************************************************/
 
 /*  Component to automatically render large data collection with variable column widths

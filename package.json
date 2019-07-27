@@ -52,11 +52,11 @@
     "fs-extra": "7.0.1",
     "geolocation-utils": "^1.2.1",
     "google-oauth-jwt": "^0.2.0",
-    "googleapis": "^37.2.0",
+    "googleapis": "^39.1.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "is-url": "^1.2.4",
-    "jest": "23.6.0",
+    "jest": "24.0.0",
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",
@@ -111,7 +111,8 @@
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
     "wordpress-hash-node": "^1.0.0",
-    "workbox-webpack-plugin": "3.6.3"
+    "workbox-webpack-plugin": "3.6.3",
+    "snyk": "^1.199.2"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -123,7 +124,9 @@
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "analyze": "npm run build -- --stats & npx webpack-bundle-analyzer ./build/bundle-stats.json"
+    "analyze": "npm run build -- --stats & npx webpack-bundle-analyzer ./build/bundle-stats.json",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "eslintConfig": {},
   "browserslist": [
@@ -219,5 +222,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "snyk": true
 }

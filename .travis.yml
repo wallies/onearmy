@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - '8'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
 dist: trusty
 sudo: false
 cache: yarn
@@ -10,10 +14,16 @@ addons:
 services:
   - docker
 
+matrix:
+  allow_failures:
+    - node_js: '12'
+  fast_finish: true
+
 # add the current github branch as an environment variable
 before_script:
   - export REACT_APP_BRANCH=$TRAVIS_BRANCH
   - echo "REACT_APP_BRANCH=$REACT_APP_BRANCH"
+  - export NODE_OPTIONS=--max_old_space_size=4096
 script:
   - npm run build
 
@@ -39,5 +49,4 @@ deploy:
 after_deploy:
   - echo "REACT_APP_BRANCH=$REACT_APP_BRANCH"
   - npm run lh -- --perf=95 https://dev.onearmy.world
-  - docker run -u zap -i owasp/zap2docker-stable zap-cli quick-scan -sc \
-    -o '-config api.disablekey=true' -s xss,sqli --spider "https://dev.onearmy.world"
+  - docker run -u zap -i owasp/zap2docker-stable zap-cli quick-scan -sc -o '-config api.disablekey=true' -s xss,sqli --spider "https://dev.onearmy.world"

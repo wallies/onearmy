@@ -25,6 +25,7 @@ before_script:
   - export NODE_OPTIONS=--max_old_space_size=4096
 script:
   - npm run build
+  - npm run lh -- --perf=95 https://dev.onearmy.world
 
 # install firebase cli and set firebase project ci token from environment
 before_deploy:

@@ -10681,19 +10681,19 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+"lighthousebot@https://github.com/ebidel/lighthousebot":
+  version "0.2.0"
+  resolved "https://github.com/ebidel/lighthousebot#7f87bcaeb221009354d90ab706379ed21eed0d39"
+  dependencies:
+    minimist "^1.2.0"
+    node-fetch "^2.2.0"
+
 lightkeeperbot@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lightkeeperbot/-/lightkeeperbot-1.0.4.tgz#2948e57aaeffaef5e056e0a26524c166ece42717"
   integrity sha512-HSpesne9InKX+QUIyjWRg2stmGqbkLSnmBNFpFLkfF5BPx7zCD+Z2E8DDtIxG2vygBTVbnJpjb6KAjNy8UA7gQ==
   dependencies:
     minimist "^1.2.0"
-
-"lighthousebot@https://github.com/ebidel/lighthousebot":
-  version "0.2.0"
-  resolved "https://github.com/ebidel/lighthousebot#350d70440116928c6dd25c4daa83ca3dcc1c3dfc"
-  dependencies:
-    minimist "^1.2.0"
-    node-fetch "^2.2.0"
 
 linkify-it@^2.0.3:
   version "2.2.0"
@@ -11700,7 +11700,7 @@ node-fetch@^1.0.1:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
-node-fetch@^2.3.0, node-fetch@^2.6.0:
+node-fetch@^2.2.0, node-fetch@^2.3.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==

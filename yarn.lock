@@ -10687,7 +10687,7 @@ lightkeeperbot@^1.0.4:
   integrity sha512-HSpesne9InKX+QUIyjWRg2stmGqbkLSnmBNFpFLkfF5BPx7zCD+Z2E8DDtIxG2vygBTVbnJpjb6KAjNy8UA7gQ==
   dependencies:
     minimist "^1.2.0"
-   
+
 "lighthousebot@https://github.com/ebidel/lighthousebot":
   version "0.2.0"
   resolved "https://github.com/ebidel/lighthousebot#350d70440116928c6dd25c4daa83ca3dcc1c3dfc"

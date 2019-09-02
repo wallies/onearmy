@@ -25,7 +25,7 @@ before_script:
   - export NODE_OPTIONS=--max_old_space_size=4096
 script:
   - npm run build
-  - docker run -i wallies/nodejsscan-cli -d ./src -o results.json
+  - docker run -i --entrypoint=python wallies/nodejsscan-cli scripts/nodejsscan.py
 
 # install firebase cli and set firebase project ci token from environment
 before_deploy:

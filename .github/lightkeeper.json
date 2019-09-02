@@ -1,5 +1,14 @@
 {
   "baseUrl": "{target_url}",
   "ci": "netlify",
-  "type": "status"
+  "type": "status",
+  "settings": {
+    "categories": {
+      "pwa": {
+        "target": 90,
+        "threshold": 50,
+        "warning": 10
+      }
+    }
+  }
 }

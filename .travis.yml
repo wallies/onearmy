@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - '8'
-  - '9'
   - '10'
   - '11'
   - '12'
@@ -26,6 +25,7 @@ before_script:
   - export NODE_OPTIONS=--max_old_space_size=4096
 script:
   - npm run build
+  - docker run -i wallies/nodejsscan-cli -d ./src -o ./results.json
 
 # install firebase cli and set firebase project ci token from environment
 before_deploy:
@@ -48,5 +48,4 @@ deploy:
       all_branches: true
 after_deploy:
   - echo "REACT_APP_BRANCH=$REACT_APP_BRANCH"
-  - npm run lh -- --perf=95 https://dev.onearmy.world
   - docker run -u zap -i owasp/zap2docker-stable zap-cli quick-scan -sc -o '-config api.disablekey=true' -s xss,sqli --spider "https://dev.onearmy.world"

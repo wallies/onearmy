@@ -8,12 +8,16 @@
   },
   "scripts": {
     "deploy": "gcloud app deploy --quiet app.yaml cron.yaml",
-    "start": "node app.js"
+    "start": "node app.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Google, Inc.",
   "license": "Apache-2.0",
   "dependencies": {
     "@google-cloud/pubsub": "^0.20.1",
-    "express": "^4.16.3"
-  }
+    "express": "^4.16.3",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
